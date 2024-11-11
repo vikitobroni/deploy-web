@@ -1,0 +1,24 @@
+runtime: python38
+handlers:
+- url: /
+  static_files: www/index.html
+  upload: www/index.html
+
+- url: /(.*)
+  static_files: www/\1
+  upload: www/(.*)
+
+
+# url: /
+# Menentukan bahwa semua permintaan ke root URL (/) akan ditangani oleh file index.html di folder www.
+# static_files
+# Menunjukkan bahwa www/index.html adalah file statis yang akan dikirim ke pengguna setiap kali root URL (/) diakses.
+# upload
+# Mengindikasikan bahwa hanya file www/index.html yang perlu di-upload ke App Engine untuk melayani permintaan ke root URL.
+
+# url: /(.*)
+# Menentukan bahwa semua URL yang dimulai dengan / diikuti teks apa pun akan ditangani oleh file statis di direktori www.
+# static_files
+# Memetakan URL permintaan ke file yang sesuai di folder www. \1 adalah bagian teks dalam URL yang cocok dengan pola (.*), sehingga URL seperti /about.html akan diarahkan ke file www/about.html.
+# upload
+# Mengatur pola file yang harus di-upload ke App Engine, di sini semua file dalam www yang cocok dengan pola (.*) akan di-upload.
